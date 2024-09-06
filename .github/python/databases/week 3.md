@@ -5,3 +5,4 @@ select * from goal;
 ### question 2
 select name,type from airport where iso_country = "FI";
 ![img_2.png](img_2.png)
+### 
