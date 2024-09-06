@@ -36,25 +36,20 @@ def get_distance(ICAO_code):
 
 
 def Calculate_distance(ICAO1, ICAO2):
-    area1=get_distance(ICAO1)
-    area2=get_distance(ICAO2)
+    area1 = get_distance(ICAO1)
+    area2 = get_distance(ICAO2)
     if area2 and area1:
-        distances=distance.distance(area2, area1).km
+        distances = distance.distance(area2, area1).km
         print(f"the distance between {ICAO1} and {ICAO2} is {distances:.2f}km")
     else:
         print("no information")
 
 
 while True:
-    ICAO_1 =input("enter the first ICAO code(use space to exit)").strip().upper()
-    ICAO_2 =input("enter the second ICAO code(use space to exit)").strip().upper()
+    ICAO_1 = input("enter the first ICAO code(use space to exit)").strip().upper()
+    ICAO_2 = input("enter the second ICAO code(use space to exit)").strip().upper()
     if (ICAO_1 or ICAO_2) == "":
         print("Exit")
         break
     else:
         Calculate_distance(ICAO_1, ICAO_2)
-
-
-
-
-
