@@ -4,7 +4,9 @@ def integer_number(number):
     for i in range(2, number + 1):
         if number % i == 0:
             return False
-    return True
+        else:
+            return True
+    else:return True
 
 
 user_number = int(input("enter an integer"))
