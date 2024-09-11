@@ -40,7 +40,7 @@ def information_airport(user_ICDO):
 
 
 while True:
-    number = input("Please input the ICAO to search the information about airport\t(use space to exit the program)")
+    number = input("Please input the ICAO to search the information about airport\n(use space to exit the program)").upper()
     if number == "":
         print("exit the program")
         break
