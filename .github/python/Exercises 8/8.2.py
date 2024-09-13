@@ -44,3 +44,26 @@ while True:
         print("exit the program")
         conn.close()
         break
+
+
+
+
+
+
+
+
+
+# airport = {}
+# cursor = conn.cursor()
+# qry = "SELECT * FROM airports"
+# try:
+#     cursor.execute(qry)
+#     results = cursor.fetchall()
+#     for row in results:
+#         ident = row[1]
+#         name = row[3]
+#         municipality = row[10]
+#         airport[ident] = [name, municipality]
+# except Exception as e:
+#     print(e)
+#     print("error")
