@@ -8,7 +8,7 @@ try:
         password="19990324s",
         host="127.0.0.1",
         port=3306,
-        database="test"
+        database="flight_game"
 
     )
 except mariadb.Error as e:
