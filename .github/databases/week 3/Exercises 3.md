@@ -1,4 +1,4 @@
-# week 3
+# Exercises 3
 ## question 1
 ```sql
 select * from goal;
