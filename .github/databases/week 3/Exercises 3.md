@@ -1,52 +1,76 @@
-# Exercises 3
+# Exercises 4
 ## question 1
 ```sql
-select * from goal;
+SELECT country.name as "country name",airport.name as "airport name"
+from airport,country
+where airport.iso_country=country.iso_country and country.name="Iceland";
 ```
-![img_1.png](question1.png)
+![img_2.png](img_2.png)
 ## question 2
 ```sql
-select name from airport where iso_country = "FI";
+SELECT airport.name as "airport name" FROM airport,country
+WHERE airport.type = "large_airport" AND airport.iso_country=country.iso_country AND country.name="France";
 ```
-![img_2.png](question2.png)
+![img_3.png](img_3.png)
 ## question 3
 ```sql
- select name from airport where iso_country = "FI" order by name;
+select country.name as country_name, airport.name as airport_name
+from airport, country
+where airport.iso_country = country.iso_country and country.continent = "AN";
 ```
-![img_3.png](question3.png)
+![img_4.png](img_4.png)
 ## question 4
 ```sql
-select name,type from airport where iso_country = "FI" order by type,name;
+select elevation_ft
+from airport, game
+where location = ident and screen_name = "Heini";
 ```
-![img_4.png](question4.png)
-## question 5
+![img_5.png](img_5.png)
+## question 5  
 ```sql
-select name from country where name like 'F%';
+select elevation_ft * 0.3048 as elevation_m
+from airport,game
+where location = ident and screen_name = "Heini";
 ```
-![img.png](w3%20question5.png)
+![img_6.png](img_6.png)
 ## question 6
 ```sql
-select name from country where name like "%F%";
+select airport.name as name 
+from airport ,game
+where airport.ident = game.location and screen_name = "Ilkka";
 ```
-![img.png](question%206.png)
+![img_7.png](img_7.png)
 ## question 7
 ```sql
-select location from game where screen_name  = "Vesa"
+select country.name as name 
+from airport ,game,country
+where airport.ident = game.location and airport.iso_country=country.iso_country and screen_name = "Ilkka";
 ```
-![img.png](question%207.png)
+![img_8.png](img_8.png)
 ## question 8
 ```sql
-select co2_consumed from game where screen_name ="Ilkka";
+select goal.name from goal ,goal_reached,game
+where goal.id=goal_reached.goal_id and game.id=goal_reached.game_id and screen_name = "Heini";
 ```
-![img.png](question%208.png)
+![img_9.png](img_9.png)
 ## question 9
 ```sql
-select distinct co2_budget from game;
+select airport.name from goal ,goal_reached,game,airport
+where goal.id=goal_reached.goal_id 
+and game.id=goal_reached.game_id 
+and game.location=airport.ident
+and screen_name = "Ilkka"
+and goal.name="CLOUDS";
 ```
-![img.png](img.png)
+![img_10.png](img_10.png)
 ## question 10
 ```sql
-select screen_name ,co2_budget , co2_consumed,(@c02_left:=co2_budget - co2_consumed) as co2_left from game
-where screen_name = "Ilkka";
+select country.name from goal ,goal_reached,game,airport,country
+where goal.id=goal_reached.goal_id 
+and game.id=goal_reached.game_id 
+and game.location=airport.ident
+and airport.iso_country = country.iso_country
+and screen_name = "Ilkka"
+and goal.name="CLOUDS";
 ```
-![img_1.png](img_1.png)
+![img_11.png](img_11.png)
