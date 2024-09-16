@@ -12,13 +12,12 @@ try:
     )
 except mariadb.Error as e:
     print(f"Error connecting to MariaDB Platform: {e}")
-    sys.exit(1)
 
 
 def country_airport(area_code):
     cursor = conn.cursor()
     qry = ("""SELECT type, COUNT(*) as count 
-    FROM airports 
+    FROM airport    
     WHERE iso_country = ?
     GROUP BY type 
     ORDER BY type
