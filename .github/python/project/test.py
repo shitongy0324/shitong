@@ -51,6 +51,7 @@ stock_df = pd.read_csv(stock_file)
 conn = sqlite3.connect('trade_game.db')
 cursor = conn.cursor()
 
+
 # 创建数据库表
 def initialize_database():
     cursor.execute('''CREATE TABLE IF NOT EXISTS Airports (
@@ -112,6 +113,7 @@ def initialize_database():
                         FOREIGN KEY (product_id) REFERENCES Products(product_id))''')
     conn.commit()
 
+
 # 插入数据到数据库
 def insert_data():
     # 插入机场数据
@@ -134,6 +136,7 @@ def insert_data():
                        (row['airport_ident'], row['product_id'], row['buy_price'], row['sell_price'], row['stock'], 7))
     conn.commit()
 
+
 # 玩家初始化
 def player_setup():
     cursor.execute("SELECT airport_id, name FROM Airports")
@@ -145,9 +148,11 @@ def player_setup():
     start_airport = int(input("输入机场编号: "))
     player_name = input("输入您的玩家名称: ")
 
-    cursor.execute("INSERT INTO Player_Info (player_id, name, current_funds, current_airport, current_day) VALUES (1, ?, 10000, ?, 0)",
-                   (player_name, start_airport))
+    cursor.execute(
+        "INSERT INTO Player_Info (player_id, name, current_funds, current_airport, current_day) VALUES (1, ?, 10000, ?, 0)",
+        (player_name, start_airport))
     conn.commit()
+
 
 # 查看目标机场商品
 def view_airport_stock(airport_id):
@@ -162,6 +167,7 @@ def view_airport_stock(airport_id):
             print(f"商品: {product[0]}, 买价: {product[1]}, 卖价: {product[2]}, 库存: {product[3]}")
     else:
         print("该机场没有可用商品。")
+
 
 # 购买商品
 def buy_product():
@@ -181,21 +187,24 @@ def buy_product():
         total_cost = product[0] * quantity
         if total_cost <= current_funds:
             # 更新玩家资金
-            cursor.execute("UPDATE Player_Info SET current_funds = current_funds - ? WHERE player_id = 1", (total_cost,))
+            cursor.execute("UPDATE Player_Info SET current_funds = current_funds - ? WHERE player_id = 1",
+                           (total_cost,))
             # 更新库存
             cursor.execute('''UPDATE Airport_Stock SET stock = stock - ? WHERE airport_id = ? AND product_id = ?''',
                            (quantity, current_airport, product_id))
             # 更新玩家背包
             cursor.execute('''INSERT OR IGNORE INTO Player_Inventory (player_id, product_id, quantity, buy_price)
                               VALUES (1, ?, ?, ?)''', (product_id, quantity, product[0]))
-            cursor.execute('''UPDATE Player_Inventory SET quantity = quantity + ? WHERE player_id = 1 AND product_id = ?''',
-                           (quantity, product_id))
+            cursor.execute(
+                '''UPDATE Player_Inventory SET quantity = quantity + ? WHERE player_id = 1 AND product_id = ?''',
+                (quantity, product_id))
             conn.commit()
             print(f"成功购买 {quantity} 单位商品（总计花费: {total_cost}）。")
         else:
             print("资金不足，无法购买。")
     else:
         print("库存不足或商品不存在。")
+
 
 # 主游戏逻辑
 def main_game():
@@ -224,6 +233,7 @@ def main_game():
 
         elif choice == '3':
             buy_product()
+
 
 # 启动游戏
 main_game()
@@ -361,4 +371,3 @@ def main_game():
 
         # 刷新库存
         refresh_stock()
-
