@@ -1,0 +1,68 @@
+body{
+    background-color: antiquewhite;
+}
+.side_bar {
+    background: rgb(200, 190, 190);
+    height: 64px;
+}
+.logo{
+    height: 100%;
+}
+.list{
+    height: 100%;
+    float: right;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 10px;
+}
+.Home{
+    text-align: center;
+    font-size: 20px;
+    text-decoration: none;
+    color: #000;
+}
+.Products{
+    text-align: center;
+    font-size: 20px;
+    text-decoration: none;
+    color: #000;
+}
+.Contact{
+    text-align: center;
+    font-size: 20px;
+    text-decoration: none;
+    color: #000;
+}
+.main{
+    display: flex;
+    gap: 50px;
+}
+.map{
+    
+    width: 100%;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px
+}
+.map iframe{
+    width: 100%;
+    height: 100%;
+}
+.title{
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+}
+p{
+    font-family: sans-serif;
+    font-size: 20px;
+}
+.text{
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
