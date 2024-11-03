@@ -1,0 +1,18 @@
+.list{
+    height: 100%;
+    float: right;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 10px;
+}
+.side_bar {
+    background: rgb(200, 190, 190);
+    height: 64px;
+}
+.text{
+    text-align: center;
+    font-size: 20px;
+    text-decoration: none;
+    color: #000;
+}
